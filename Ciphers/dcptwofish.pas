@@ -482,10 +482,10 @@ begin
     x[0]:= (x[0] shr 1) or (x[0] shl 31);
     Inc(i,2);
   end;
-  PDWord(longword(@OutData)+ 0)^:= x[2] xor SubKeys[OUTPUTWHITEN];
-  PDWord(longword(@OutData)+ 4)^:= x[3] xor SubKeys[OUTPUTWHITEN+1];
-  PDWord(longword(@OutData)+ 8)^:= x[0] xor SubKeys[OUTPUTWHITEN+2];
-  PDWord(longword(@OutData)+12)^:= x[1] xor SubKeys[OUTPUTWHITEN+3];
+  PDWord(PtrUInt(@OutData)+ 0)^:= x[2] xor SubKeys[OUTPUTWHITEN];
+  PDWord(PtrUInt(@OutData)+ 4)^:= x[3] xor SubKeys[OUTPUTWHITEN+1];
+  PDWord(PtrUInt(@OutData)+ 8)^:= x[0] xor SubKeys[OUTPUTWHITEN+2];
+  PDWord(PtrUInt(@OutData)+12)^:= x[1] xor SubKeys[OUTPUTWHITEN+3];
 end;
 
 procedure TDCP_twofish.DecryptECB(const InData; var OutData);
@@ -522,10 +522,10 @@ begin
     x[3]:= (x[3] shr 1) or (x[3] shl 31);
     Dec(i,2);
   end;
-  PDWord(longword(@OutData)+ 0)^:= X[0] xor SubKeys[INPUTWHITEN];
-  PDWord(longword(@OutData)+ 4)^:= X[1] xor SubKeys[INPUTWHITEN+1];
-  PDWord(longword(@OutData)+ 8)^:= X[2] xor SubKeys[INPUTWHITEN+2];
-  PDWord(longword(@OutData)+12)^:= X[3] xor SubKeys[INPUTWHITEN+3];
+  PDWord(PtrUInt(@OutData)+ 0)^:= X[0] xor SubKeys[INPUTWHITEN];
+  PDWord(PtrUInt(@OutData)+ 4)^:= X[1] xor SubKeys[INPUTWHITEN+1];
+  PDWord(PtrUInt(@OutData)+ 8)^:= X[2] xor SubKeys[INPUTWHITEN+2];
+  PDWord(PtrUInt(@OutData)+12)^:= X[3] xor SubKeys[INPUTWHITEN+3];
 end;
 
 procedure PreCompMDS;

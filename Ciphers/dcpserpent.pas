@@ -217,10 +217,10 @@ begin
   end;
   a:= a xor l_key[128]; b:= b xor l_key[128+1]; c:= c xor l_key[128+2]; d:= d xor l_key[128+3];
 
-  PDWord(longword(@OutData)+ 0)^:= a;
-  PDWord(longword(@OutData)+ 4)^:= b;
-  PDWord(longword(@OutData)+ 8)^:= c;
-  PDWord(longword(@OutData)+12)^:= d;
+  PDWord(PtrUInt(@OutData)+ 0)^:= a;
+  PDWord(PtrUInt(@OutData)+ 4)^:= b;
+  PDWord(PtrUInt(@OutData)+ 8)^:= c;
+  PDWord(PtrUInt(@OutData)+12)^:= d;
 end;
 
 procedure TDCP_serpent.DecryptECB(const InData; var OutData);
@@ -272,10 +272,10 @@ begin
     Dec(i,8);
   end;
 
-  PDWord(longword(@OutData)+ 0)^:= a;
-  PDWord(longword(@OutData)+ 4)^:= b;
-  PDWord(longword(@OutData)+ 8)^:= c;
-  PDWord(longword(@OutData)+12)^:= d;
+  PDWord(PtrUInt(@OutData)+ 0)^:= a;
+  PDWord(PtrUInt(@OutData)+ 4)^:= b;
+  PDWord(PtrUInt(@OutData)+ 8)^:= c;
+  PDWord(PtrUInt(@OutData)+12)^:= d;
 end;
 
 end.

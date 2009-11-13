@@ -40,7 +40,9 @@ type
   Pword= ^word;
   Pdword= ^dword;
   Pint64= ^int64;
+  {$IFNDEF FPC}
   dword= longword;
+  {$ENDIF}
   Pwordarray= ^Twordarray;
   Twordarray= array[0..19383] of word;
   Pdwordarray= ^Tdwordarray;
