@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <CONFIG>
   <Package Version="3">
-    <Name Value="DCPlazarus"/>
-    <Author Value="David Barton - converted for lazarus by barko, 2006"/>
+    <Name Value="dcpcrypt_laz"/>
+    <AddToProjectUsesSection Value="False"/>
+    <Author Value="David Barton, Barko &amp; Graeme Geldenhuys"/>
     <CompilerOptions>
       <Version Value="8"/>
       <SearchPaths>
         <OtherUnitFiles Value="Ciphers/;Hashes/;$(PkgOutDir)/"/>
-        <UnitOutputDirectory Value="lib"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
       <Parsing>
         <SyntaxOptions>
@@ -21,9 +22,9 @@
     </CompilerOptions>
     <Description Value="DCPcrypt Cryptographic Component Library
 "/>
-    <License Value="DCPcrypt is open source software (released under the MIT license) and as such there is no charge for inclusion in other software. However, I am currently a student and if you are making money from my software I would really appreciate a donation of some sort, whether financial or a license for the software you develop (or if anyone wants to sponsor a Mathematical Modelling (Masters) student for their final year...). Please note THIS IS NOT COMPULSORY IN ANY WAY. See http://www.cityinthesky.co.uk/cryptography.html for details on donations. 
-"/>
-    <Version Major="2" Release="3" Build="2"/>
+    <License Value="DCPcrypt is open source software (released under the MIT license) and as such there is no charge for inclusion in other software.
+www.cityinthesky.co.uk/cryptography.html"/>
+    <Version Major="2" Release="4"/>
     <Files Count="1">
       <Item1>
         <Filename Value="dcpreg.pas"/>
@@ -35,7 +36,7 @@
     <RequiredPkgs Count="2">
       <Item1>
         <PackageName Value="dcpcrypt"/>
-        <MinVersion Major="2" Release="3" Build="2" Valid="True"/>
+        <MinVersion Major="2" Release="4" Valid="True"/>
       </Item1>
       <Item2>
         <PackageName Value="LCL"/>

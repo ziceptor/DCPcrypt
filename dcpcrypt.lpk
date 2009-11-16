@@ -22,7 +22,8 @@
     </CompilerOptions>
     <Description Value="DCPcrypt Cryptographic Component Library
 "/>
-    <License Value="DCPcrypt is open source software (released under the MIT license) and as such there is no charge for inclusion in other software. However, I am currently a student and if you are making money from my software I would really appreciate a donation of some sort, whether financial or a license for the software you develop (or if anyone wants to sponsor a Mathematical Modelling (Masters) student for their final year...). Please note THIS IS NOT COMPULSORY IN ANY WAY. See http://www.cityinthesky.co.uk/cryptography.html for details on donations. 
+    <License Value="DCPcrypt is open source software (released under the MIT license) and as such there is no charge for inclusion in other software.
+www.cityinthesky.co.uk/cryptography.html
 "/>
     <Version Major="2" Release="4"/>
     <Files Count="30">
