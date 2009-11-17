@@ -214,7 +214,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   PDword(@X[1])^:= PDword(@InData)^;
-  PDword(@X[3])^:= PDword(dword(@InData)+4)^;
+  PDword(@X[3])^:= PDword(pointer(@InData)+4)^;
   for i:= 1 to 4 do
     x[i]:= (x[i] shl 8) or (x[i] shr 8);
   for i:= 0 to 7 do
@@ -246,7 +246,7 @@ begin
   x[4]:= (x[4] shl 8) or (x[4] shr 8);
   x[2]:= s2;
   PDword(@OutData)^:= PDword(@x[1])^;
-  PDword(dword(@OutData)+4)^:= PDword(@x[3])^;
+  PDword(pointer(@OutData)+4)^:= PDword(@x[3])^;
 end;
 
 procedure TDCP_idea.DecryptECB(const InData; var OutData);
@@ -258,7 +258,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   PDword(@X[1])^:= PDword(@InData)^;
-  PDword(@X[3])^:= PDword(dword(@InData)+4)^;
+  PDword(@X[3])^:= PDword(pointer(@InData)+4)^;
   for i:= 1 to 4 do
     x[i]:= (x[i] shl 8) or (x[i] shr 8);
   for i:= 0 to 7 do
@@ -290,7 +290,7 @@ begin
   x[4]:= (x[4] shl 8) or (x[4] shr 8);
   x[2]:= s2;
   PDword(@OutData)^:= PDword(@x[1])^;
-  PDword(dword(@OutData)+4)^:= PDword(@x[3])^;
+  PDword(pointer(@OutData)+4)^:= PDword(@x[3])^;
 end;
 
 

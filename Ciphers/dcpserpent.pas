@@ -178,9 +178,9 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
 
   a:= PDWord(@InData)^;
-  b:= PDWord(longword(@InData)+4)^;
-  c:= PDWord(longword(@InData)+8)^;
-  d:= PDWord(longword(@InData)+12)^;
+  b:= PDWord(pointer(@InData)+4)^;
+  c:= PDWord(pointer(@InData)+8)^;
+  d:= PDWord(pointer(@InData)+12)^;
 
   i:= 0;
   while i < 32 do
@@ -217,10 +217,10 @@ begin
   end;
   a:= a xor l_key[128]; b:= b xor l_key[128+1]; c:= c xor l_key[128+2]; d:= d xor l_key[128+3];
 
-  PDWord(PtrUInt(@OutData)+ 0)^:= a;
-  PDWord(PtrUInt(@OutData)+ 4)^:= b;
-  PDWord(PtrUInt(@OutData)+ 8)^:= c;
-  PDWord(PtrUInt(@OutData)+12)^:= d;
+  PDWord(pointer(@OutData)+ 0)^:= a;
+  PDWord(pointer(@OutData)+ 4)^:= b;
+  PDWord(pointer(@OutData)+ 8)^:= c;
+  PDWord(pointer(@OutData)+12)^:= d;
 end;
 
 procedure TDCP_serpent.DecryptECB(const InData; var OutData);
@@ -233,9 +233,9 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
 
   a:= PDWord(@InData)^;
-  b:= PDWord(longword(@InData)+4)^;
-  c:= PDWord(longword(@InData)+8)^;
-  d:= PDWord(longword(@InData)+12)^;
+  b:= PDWord(pointer(@InData)+4)^;
+  c:= PDWord(pointer(@InData)+8)^;
+  d:= PDWord(pointer(@InData)+12)^;
 
   i:= 32;
   a:= a xor l_key[4*32]; b:= b xor l_key[4*32+1]; c:= c xor l_key[4*32+2]; d:= d xor l_key[4*32+3]; 
@@ -272,10 +272,10 @@ begin
     Dec(i,8);
   end;
 
-  PDWord(PtrUInt(@OutData)+ 0)^:= a;
-  PDWord(PtrUInt(@OutData)+ 4)^:= b;
-  PDWord(PtrUInt(@OutData)+ 8)^:= c;
-  PDWord(PtrUInt(@OutData)+12)^:= d;
+  PDWord(pointer(@OutData)+ 0)^:= a;
+  PDWord(pointer(@OutData)+ 4)^:= b;
+  PDWord(pointer(@OutData)+ 8)^:= c;
+  PDWord(pointer(@OutData)+12)^:= d;
 end;
 
 end.

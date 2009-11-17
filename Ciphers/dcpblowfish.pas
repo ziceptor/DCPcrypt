@@ -47,9 +47,8 @@ type
   end;
 
 
-{******************************************************************************}
-{******************************************************************************}
 implementation
+
 {$R-}{$Q-}
 {$I DCPblowfish.inc}
 
@@ -151,7 +150,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   xL:= Pdword(@InData)^;
-  xR:= Pdword(longword(@InData)+4)^;
+  xR:= Pdword(pointer(@InData)+4)^;
   xL:= ((xL and $FF) shl 24) or ((xL and $FF00) shl 8) or ((xL and $FF0000) shr 8) or ((xL and $FF000000) shr 24);
   xR:= ((xR and $FF) shl 24) or ((xR and $FF00) shl 8) or ((xR and $FF0000) shr 8) or ((xR and $FF000000) shr 24);
   xL:= xL xor PBox[0];
@@ -191,7 +190,7 @@ begin
   xL:= ((xL and $FF) shl 24) or ((xL and $FF00) shl 8) or ((xL and $FF0000) shr 8) or ((xL and $FF000000) shr 24);
   xR:= ((xR and $FF) shl 24) or ((xR and $FF00) shl 8) or ((xR and $FF0000) shr 8) or ((xR and $FF000000) shr 24);
   Pdword(@OutData)^:= xR;
-  Pdword(longword(@OutData)+4)^:= xL;
+  Pdword(pointer(@OutData)+4)^:= xL;
 end;
 
 procedure TDCP_blowfish.DecryptECB(const InData; var OutData);
@@ -201,7 +200,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   xL:= Pdword(@InData)^;
-  xR:= Pdword(longword(@InData)+4)^;
+  xR:= Pdword(pointer(@InData)+4)^;
   xL:= (xL shr 24) or ((xL shr 8) and $FF00) or ((xL shl 8) and $FF0000) or (xL shl 24);
   xR:= (xR shr 24) or ((xR shr 8) and $FF00) or ((xR shl 8) and $FF0000) or (xR shl 24);
   xL:= xL xor PBox[17];
@@ -241,7 +240,7 @@ begin
   xL:= (xL shr 24) or ((xL shr 8) and $FF00) or ((xL shl 8) and $FF0000) or (xL shl 24);
   xR:= (xR shr 24) or ((xR shr 8) and $FF00) or ((xR shl 8) and $FF0000) or (xR shl 24);
   Pdword(@OutData)^:= xR;
-  Pdword(longword(@OutData)+4)^:= xL;
+  Pdword(pointer(@OutData)+4)^:= xL;
 end;
 
 end.

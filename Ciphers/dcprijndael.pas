@@ -236,9 +236,9 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   PDword(@a[0,0])^:= PDword(@InData)^;
-  PDword(@a[1,0])^:= PDword(dword(@InData)+4)^;
-  PDword(@a[2,0])^:= PDword(dword(@InData)+8)^;
-  PDword(@a[3,0])^:= PDword(dword(@InData)+12)^;
+  PDword(@a[1,0])^:= PDword(pointer(@InData)+4)^;
+  PDword(@a[2,0])^:= PDword(pointer(@InData)+8)^;
+  PDword(@a[3,0])^:= PDword(pointer(@InData)+12)^;
   for r:= 0 to (numrounds-2) do
   begin
     PDWord(@tempb[0])^:= PDWord(@a[0])^ xor rk[r,0];
@@ -288,9 +288,9 @@ begin
   PDWord(@a[3])^:= PDWord(@a[3])^ xor rk[numrounds,3];
 
   PDword(@OutData)^:= PDword(@a[0,0])^;
-  PDword(dword(@OutData)+4)^:= PDword(@a[1,0])^;
-  PDword(dword(@OutData)+8)^:= PDword(@a[2,0])^;
-  PDword(dword(@OutData)+12)^:= PDword(@a[3,0])^;
+  PDword(pointer(@OutData)+4)^:= PDword(@a[1,0])^;
+  PDword(pointer(@OutData)+8)^:= PDword(@a[2,0])^;
+  PDword(pointer(@OutData)+12)^:= PDword(@a[3,0])^;
 end;
 
 procedure TDCP_rijndael.DecryptECB(const InData; var OutData);
@@ -302,9 +302,9 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   PDword(@a[0,0])^:= PDword(@InData)^;
-  PDword(@a[1,0])^:= PDword(dword(@InData)+4)^;
-  PDword(@a[2,0])^:= PDword(dword(@InData)+8)^;
-  PDword(@a[3,0])^:= PDword(dword(@InData)+12)^;
+  PDword(@a[1,0])^:= PDword(pointer(@InData)+4)^;
+  PDword(@a[2,0])^:= PDword(pointer(@InData)+8)^;
+  PDword(@a[3,0])^:= PDword(pointer(@InData)+12)^;
   for r:= NumRounds downto 2 do
   begin
     PDWord(@tempb[0])^:= PDWord(@a[0])^ xor drk[r,0];
@@ -353,9 +353,9 @@ begin
   PDWord(@a[2])^:= PDWord(@a[2])^ xor drk[0,2];
   PDWord(@a[3])^:= PDWord(@a[3])^ xor drk[0,3];
   PDword(@OutData)^:= PDword(@a[0,0])^;
-  PDword(dword(@OutData)+4)^:= PDword(@a[1,0])^;
-  PDword(dword(@OutData)+8)^:= PDword(@a[2,0])^;
-  PDword(dword(@OutData)+12)^:= PDword(@a[3,0])^;
+  PDword(pointer(@OutData)+4)^:= PDword(@a[1,0])^;
+  PDword(pointer(@OutData)+8)^:= PDword(@a[2,0])^;
+  PDword(pointer(@OutData)+12)^:= PDword(@a[3,0])^;
 end;
 
 

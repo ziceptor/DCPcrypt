@@ -99,21 +99,21 @@ begin
   while i< 255 do
   begin
     KeyData[i]:= i;
-    xKey[i]:= PByte(longword(@Key)+(i mod Size))^;
+    xKey[i]:= PByte(pointer(@Key)+(i mod Size))^;
     KeyData[i+1]:= i+1;
-    xKey[i+1]:= PByte(longword(@Key)+((i+1) mod Size))^;
+    xKey[i+1]:= PByte(pointer(@Key)+((i+1) mod Size))^;
     KeyData[i+2]:= i+2;
-    xKey[i+2]:= PByte(longword(@Key)+((i+2) mod Size))^;
+    xKey[i+2]:= PByte(pointer(@Key)+((i+2) mod Size))^;
     KeyData[i+3]:= i+3;
-    xKey[i+3]:= PByte(longword(@Key)+((i+3) mod Size))^;
+    xKey[i+3]:= PByte(pointer(@Key)+((i+3) mod Size))^;
     KeyData[i+4]:= i+4;
-    xKey[i+4]:= PByte(longword(@Key)+((i+4) mod Size))^;
+    xKey[i+4]:= PByte(pointer(@Key)+((i+4) mod Size))^;
     KeyData[i+5]:= i+5;
-    xKey[i+5]:= PByte(longword(@Key)+((i+5) mod Size))^;
+    xKey[i+5]:= PByte(pointer(@Key)+((i+5) mod Size))^;
     KeyData[i+6]:= i+6;
-    xKey[i+6]:= PByte(longword(@Key)+((i+6) mod Size))^;
+    xKey[i+6]:= PByte(pointer(@Key)+((i+6) mod Size))^;
     KeyData[i+7]:= i+7;
-    xKey[i+7]:= PByte(longword(@Key)+((i+7) mod Size))^;
+    xKey[i+7]:= PByte(pointer(@Key)+((i+7) mod Size))^;
     Inc(i,8);
   end;
   j:= 0;

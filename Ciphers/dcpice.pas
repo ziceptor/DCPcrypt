@@ -272,7 +272,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   l:= SwapDWord(Pdword(@InData)^);
-  r:= SwapDWord(Pdword(longword(@InData)+4)^);
+  r:= SwapDWord(Pdword(pointer(@InData)+4)^);
   i:= 0;
   while i< rounds do
   begin
@@ -281,7 +281,7 @@ begin
     Inc(i,2);
   end;
   Pdword(@OutData)^:= SwapDWord(r);
-  Pdword(longword(@OutData)+4)^:= SwapDWord(l);
+  Pdword(pointer(@OutData)+4)^:= SwapDWord(l);
 end;
 
 procedure TDCP_customice.DecryptECB(const InData; var OutData);
@@ -292,7 +292,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   l:= SwapDWord(Pdword(@InData)^);
-  r:= SwapDWord(Pdword(longword(@InData)+4)^);
+  r:= SwapDWord(Pdword(pointer(@InData)+4)^);
   i:= rounds-1;
   while i> 0 do
   begin
@@ -301,7 +301,7 @@ begin
     Dec(i,2);
   end;
   Pdword(@OutData)^:= SwapDWord(r);
-  Pdword(longword(@OutData)+4)^:= SwapDWord(l);
+  Pdword(pointer(@OutData)+4)^:= SwapDWord(l);
 end;
 
 constructor TDCP_customice.Create(AOwner: TComponent);

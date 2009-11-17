@@ -205,8 +205,8 @@ begin
     XorBlock(p2^,CV,8);
     EncryptECB(p2^,p2^);
     Move(p2^,CV,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(p1 + 8);
+    p2:= pointer(p2 + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -233,8 +233,8 @@ begin
     DecryptECB(p2^,p2^);
     XorBlock(p2^,CV,8);
     Move(Temp,CV,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(p1 + 8);
+    p2:= pointer(p2 + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -303,8 +303,8 @@ begin
     Move(p1^,p2^,8);
     XorBlock(p2^,CV,8);
     Move(p2^,CV,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(pointer(p1) + 8);
+    p2:= pointer(pointer(p2) + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -331,8 +331,8 @@ begin
     Move(p1^,p2^,8);
     XorBlock(p2^,CV,8);
     Move(Temp,CV,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(pointer(p1) + 8);
+    p2:= pointer(pointer(p2) + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -356,8 +356,8 @@ begin
     EncryptECB(CV,CV);
     Move(p1^,p2^,8);
     XorBlock(p2^,CV,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(p1 + 8);
+    p2:= pointer(p2 + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -381,8 +381,8 @@ begin
     EncryptECB(CV,CV);
     Move(p1^,p2^,8);
     XorBlock(p2^,CV,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(p1 + 8);
+    p2:= pointer(p2 + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -408,8 +408,8 @@ begin
     IncCounter;
     Move(p1^,p2^,8);
     XorBlock(p2^,temp,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(p1 + 8);
+    p2:= pointer(p2 + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -436,8 +436,8 @@ begin
     IncCounter;
     Move(p1^,p2^,8);
     XorBlock(p2^,temp,8);
-    p1:= pointer(longword(p1) + 8);
-    p2:= pointer(longword(p2) + 8);
+    p1:= pointer(p1 + 8);
+    p2:= pointer(p2 + 8);
   end;
   if (Size mod 8)<> 0 then
   begin
@@ -530,8 +530,8 @@ begin
     XorBlock(p2^,CV,16);
     EncryptECB(p2^,p2^);
     Move(p2^,CV,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(p1 + 16);
+    p2:= pointer(p2 + 16);
   end;
   if (Size mod 16)<> 0 then
   begin
@@ -558,8 +558,8 @@ begin
     DecryptECB(p2^,p2^);
     XorBlock(p2^,CV,16);
     Move(Temp,CV,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(p1 + 16);
+    p2:= pointer(p2 + 16);
   end;
   if (Size mod 16)<> 0 then
   begin
@@ -628,8 +628,8 @@ begin
     Move(p1^,p2^,16);
     XorBlock(p2^,CV,16);
     Move(p2^,CV,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(pointer(p1) + 16);
+    p2:= pointer(pointer(p2) + 16);
   end;
   if (Size mod 16)<> 0 then
   begin
@@ -656,8 +656,8 @@ begin
     Move(p1^,p2^,16);
     XorBlock(p2^,CV,16);
     Move(Temp,CV,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(pointer(p1) + 16);
+    p2:= pointer(pointer(p2) + 16);
   end;
   if (Size mod 16)<> 0 then
   begin
@@ -681,8 +681,8 @@ begin
     EncryptECB(CV,CV);
     Move(p1^,p2^,16);
     XorBlock(p2^,CV,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(p1 + 16);
+    p2:= pointer(p2 + 16);
   end;
   if (Size mod 16)<> 0 then
   begin
@@ -706,8 +706,8 @@ begin
     EncryptECB(CV,CV);
     Move(p1^,p2^,16);
     XorBlock(p2^,CV,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(p1 + 16);
+    p2:= pointer(p2 + 16);
   end;
   if (Size mod 16)<> 0 then
   begin
@@ -733,8 +733,8 @@ begin
     IncCounter;
     Move(p1^,p2^,16);
     XorBlock(p2^,temp,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(p1 + 16);
+    p2:= pointer(p2 + 16);
   end;
   if (Size mod 16)<> 0 then
   begin
@@ -761,8 +761,8 @@ begin
     IncCounter;
     Move(p1^,p2^,16);
     XorBlock(p2^,temp,16);
-    p1:= pointer(longword(p1) + 16);
-    p2:= pointer(longword(p2) + 16);
+    p1:= pointer(p1 + 16);
+    p2:= pointer(p2 + 16);
   end;
   if (Size mod 16)<> 0 then
   begin

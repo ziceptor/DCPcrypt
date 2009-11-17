@@ -167,7 +167,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   A:= PDword(@InData)^ + KeyData[0];
-  B:= PDword(longword(@InData)+4)^ + KeyData[1];
+  B:= PDword(pointer(@InData)+4)^ + KeyData[1];
   for i:= 1 to NUMROUNDS do
   begin
     A:= A xor B;
@@ -176,7 +176,7 @@ begin
     B:= LRot32(B,A)+KeyData[(2*i)+1];
   end;
   PDword(@OutData)^:= A;
-  PDword(longword(@OutData)+4)^:= B;
+  PDword(pointer(@OutData)+4)^:= B;
 end;
 
 procedure TDCP_rc5.DecryptECB(const InData; var OutData);
@@ -187,7 +187,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   A:= PDword(@InData)^;
-  B:= PDword(longword(@InData)+4)^;
+  B:= PDword(pointer(@InData)+4)^;
   for i:= NUMROUNDS downto 1 do
   begin
     B:= RRot32(B-KeyData[(2*i)+1],A);
@@ -196,7 +196,7 @@ begin
     A:= A xor B;
   end;
   PDword(@OutData)^:= A - KeyData[0];
-  PDword(longword(@OutData)+4)^:= B - KeyData[1];
+  PDword(pointer(@OutData)+4)^:= B - KeyData[1];
 end;
 
 end.

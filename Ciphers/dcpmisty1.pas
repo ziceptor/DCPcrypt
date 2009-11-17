@@ -214,7 +214,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   d0:= SwapDWord(PDWord(@InData)^);
-  d1:= SwapDWord(PDWord(longword(@InData)+4)^);
+  d1:= SwapDWord(PDWord(pointer(@InData)+4)^);
   for i:= 0 to NUMROUNDS-1 do
   begin
     if (i mod 2)= 0 then
@@ -229,7 +229,7 @@ begin
   d0:= FL(d0,NUMROUNDS);
   d1:= FL(d1,NUMROUNDS+1);
   PDWord(@OutData)^:= SwapDWord(d1);
-  PDWord(longword(@OutData)+4)^:= SwapDWord(d0);
+  PDWord(pointer(@OutData)+4)^:= SwapDWord(d0);
 end;
 
 procedure TDCP_misty1.DecryptECB(const InData; var OutData);
@@ -240,7 +240,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   d1:= SwapDWord(PDWord(@InData)^);
-  d0:= SwapDWord(PDWord(longword(@InData)+4)^);
+  d0:= SwapDWord(PDWord(pointer(@InData)+4)^);
   d1:= FLINV(d1,NUMROUNDS+1);
   d0:= FLINV(d0,NUMROUNDS);
   for i:= NUMROUNDS-1 downto 0 do
@@ -255,7 +255,7 @@ begin
       d0:= d0 xor FO(d1,i);
   end;
   PDWord(@OutData)^:= SwapDWord(d0);
-  PDWord(longword(@OutData)+4)^:= SwapDWord(d1);
+  PDWord(pointer(@OutData)+4)^:= SwapDWord(d1);
 end;
 
 end.

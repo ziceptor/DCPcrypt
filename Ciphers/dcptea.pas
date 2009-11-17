@@ -52,7 +52,7 @@ implementation
 {$R-}{$Q-}
 
 const
-  Delta= $9e3779b9;
+  Delta: DWord = $9e3779b9;
   Rounds= 32;
 
 function SwapDword(a: dword): dword;
@@ -115,7 +115,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
 
   x:= SwapDWord(pdword(@InData)^);
-  y:= SwapDWord(pdword(longword(@InData)+4)^);
+  y:= SwapDWord(pdword(pointer(@InData)+4)^);
   sum:= 0; a:= KeyData[0]; b:= KeyData[1]; c:= KeyData[2]; d:= KeyData[3];
   for n:= 1 to Rounds do
   begin
@@ -124,7 +124,7 @@ begin
     Inc(y,(x shl 4) + (c xor x) + (sum xor (x shr 5)) + d);
   end;
   pdword(@OutData)^:= SwapDWord(x);
-  pdword(longword(@OutData)+4)^:= SwapDWord(y);
+  pdword(pointer(@OutData)+4)^:= SwapDWord(y);
 end;
 
 procedure TDCP_tea.DecryptECB(const InData; var OutData);
@@ -135,8 +135,12 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
 
   x:= SwapDWord(pdword(@InData)^);
-  y:= SwapDWord(pdword(longword(@InData)+4)^);
-  sum:= Delta shl 5; a:= KeyData[0]; b:= KeyData[1]; c:= KeyData[2]; d:= KeyData[3];
+  y:= SwapDWord(pdword(pointer(@InData)+4)^);
+  sum:= Delta shl 5;
+  a:= KeyData[0];
+  b:= KeyData[1];
+  c:= KeyData[2];
+  d:= KeyData[3];
   for n:= 1 to Rounds do
   begin
     Dec(y,(x shl 4) + (c xor x) + (sum xor (x shr 5)) + d);
@@ -144,7 +148,7 @@ begin
     Dec(sum,Delta);
   end;
   pdword(@OutData)^:= SwapDWord(x);
-  pdword(longword(@OutData)+4)^:= SwapDWord(y);
+  pdword(pointer(@OutData)+4)^:= SwapDWord(y);
 end;
 
 end.

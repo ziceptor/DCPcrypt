@@ -250,7 +250,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   l:= Pdword(@InData)^;
-  r:= Pdword(longword(@InData)+4)^;
+  r:= Pdword(Pointer(@InData)+4)^;
   l:= (l shr 24) or ((l shr 8) and $FF00) or ((l shl 8) and $FF0000) or (l shl 24);
   r:= (r shr 24) or ((r shr 8) and $FF00) or ((r shl 8) and $FF0000) or (r shl 24);
   t:= LRot32(KeyData[0]+r, KeyData[0+16]);
@@ -307,7 +307,7 @@ begin
   l:= (l shr 24) or ((l shr 8) and $FF00) or ((l shl 8) and $FF0000) or (l shl 24);
   r:= (r shr 24) or ((r shr 8) and $FF00) or ((r shl 8) and $FF0000) or (r shl 24);
   Pdword(@OutData)^:= r;
-  Pdword(longword(@OutData)+4)^:= l;
+  Pdword(pointer(@OutData)+4)^:= l;
 end;
 
 procedure TDCP_cast128.DecryptECB(const InData; var OutData);
@@ -317,7 +317,7 @@ begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
   r:= Pdword(@InData)^;
-  l:= Pdword(longword(@InData)+4)^;
+  l:= Pdword(pointer(@InData)+4)^;
   l:= (l shr 24) or ((l shr 8) and $FF00) or ((l shl 8) and $FF0000) or (l shl 24);
   r:= (r shr 24) or ((r shr 8) and $FF00) or ((r shl 8) and $FF0000) or (r shl 24);
   if Rounds> 12 then
@@ -374,7 +374,7 @@ begin
   l:= (l shr 24) or ((l shr 8) and $FF00) or ((l shl 8) and $FF0000) or (l shl 24);
   r:= (r shr 24) or ((r shr 8) and $FF00) or ((r shl 8) and $FF0000) or (r shl 24);
   Pdword(@OutData)^:= l;
-  Pdword(longword(@OutData)+4)^:= r;
+  Pdword(pointer(@OutData)+4)^:= r;
 end;
 
 

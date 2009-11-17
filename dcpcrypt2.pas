@@ -28,7 +28,7 @@ unit DCPcrypt2;
 
 interface
 uses
-  Classes, Sysutils, DCPconst, DCPbase64;
+  Classes, Sysutils, DCPbase64;
 
 //{$DEFINE DCP1COMPAT}  { DCPcrypt v1.31 compatiblity mode - see documentation }
 
@@ -36,15 +36,15 @@ uses
     { A few predefined types to help out }
 
 type
+  {$IFNDEF FPC}
   Pbyte= ^byte;
   Pword= ^word;
   Pdword= ^dword;
   Pint64= ^int64;
-  {$IFNDEF FPC}
   dword= longword;
-  {$ENDIF}
   Pwordarray= ^Twordarray;
   Twordarray= array[0..19383] of word;
+  {$ENDIF}
   Pdwordarray= ^Tdwordarray;
   Tdwordarray= array[0..8191] of dword;
 
@@ -629,10 +629,14 @@ end;
 {** Helpher functions *********************************************************}
 procedure XorBlock(var InData1, InData2; Size: longword);
 var
+  b1: PByteArray;
+  b2: PByteArray;
   i: longword;
 begin
-  for i:= 1 to Size do
-    Pbyte(longword(@InData1)+i-1)^:= Pbyte(longword(@InData1)+i-1)^ xor Pbyte(longword(@InData2)+i-1)^;
+  b1 := @InData1;
+  b2 := @InData2;
+  for i := 0 to size-1 do
+    b1[i] := b1[i] xor b2[i];
 end;
 
 end.
