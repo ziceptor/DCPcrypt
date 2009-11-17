@@ -106,6 +106,7 @@ var
   Cipher: TDCP_rc5;
   Data: array[0..1] of dword;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_rc5.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(Plain1,Data);
@@ -128,7 +129,7 @@ var
   i, j, k, xKeyLen: longword;
   A, B: DWord;
 begin
-  FillChar(xKeyD,Sizeof(xKeyD),0);
+  dcpFillChar(xKeyD,Sizeof(xKeyD),0);
   Size:= Size div 8;
   Move(Key,xKeyD,Size);
   xKeyLen:= Size div 4;

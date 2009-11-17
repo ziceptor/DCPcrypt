@@ -84,6 +84,7 @@ var
   Cipher: TDCP_idea;
   Data: array[0..7] of byte;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_idea.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Data);

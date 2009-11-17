@@ -247,9 +247,14 @@ type
     { Helper functions }
 
 procedure XorBlock(var InData1, InData2; Size: longword);
+// removes the compiler hint due to first param being 'var' instead of 'out'
+procedure dcpFillChar(out x; count: SizeInt; Value: Byte); overload;
+procedure dcpFillChar(out x; count: SizeInt; Value: Char); overload;
+
 
 
 implementation
+
 {$Q-}{$R-}
 
 
@@ -319,6 +324,7 @@ var
   Buffer: array[0..8191] of byte;
   i, read: integer;
 begin
+  dcpFillChar(Buffer, SizeOf(Buffer), 0);
   for i:= 1 to (Size div Sizeof(Buffer)) do
   begin
     read:= Stream.Read(Buffer,Sizeof(Buffer));
@@ -414,9 +420,13 @@ begin
     Hash.Final(Digest^);
     Hash.Free;
     if MaxKeySize< HashType.GetHashSize then
-      Init(Digest^,MaxKeySize,nil)
+    begin
+      Init(Digest^,MaxKeySize,nil);
+    end
     else
+    begin
       Init(Digest^,HashType.GetHashSize,nil);
+    end;
     FillChar(Digest^,HashType.GetHashSize div 8,$FF);
     FreeMem(Digest);
   except
@@ -446,6 +456,7 @@ var
   Buffer: array[0..8191] of byte;
   i, Read: longword;
 begin
+  dcpFillChar(Buffer, SizeOf(Buffer), 0);
   Result:= 0;
   for i:= 1 to (Size div Sizeof(Buffer)) do
   begin
@@ -468,6 +479,7 @@ var
   Buffer: array[0..8191] of byte;
   i, Read: longword;
 begin
+  dcpFillChar(Buffer, SizeOf(Buffer), 0);
   Result:= 0;
   for i:= 1 to (Size div Sizeof(Buffer)) do
   begin
@@ -637,6 +649,20 @@ begin
   b2 := @InData2;
   for i := 0 to size-1 do
     b1[i] := b1[i] xor b2[i];
+end;
+
+procedure dcpFillChar(out x; count: SizeInt; Value: Byte);
+begin
+  {$HINTS OFF}
+  FillChar(x, count, value);
+  {$HINTS ON}
+end;
+
+procedure dcpFillChar(out x; count: SizeInt; Value: Char);
+begin
+  {$HINTS OFF}
+  FillChar(x, count, Value);
+  {$HINTS ON}
 end;
 
 end.

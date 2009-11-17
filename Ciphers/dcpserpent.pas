@@ -94,6 +94,7 @@ var
   Block: array[0..15] of byte;
   Cipher: TDCP_serpent;
 begin
+  dcpFillChar(Block, SizeOf(Block), 0);
   Cipher:= TDCP_serpent.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Block);
@@ -123,7 +124,7 @@ var
   t, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17: dword;
   a, b, c, d: dword;
 begin
-  FillChar(kp,256 div 8,0);
+  dcpFillChar(kp, SizeOf(kp), 0);
   Move(Key,kp,Size div 8);
   if Size < 256 then
   begin

@@ -96,6 +96,7 @@ var
   Block: array[0..7] of byte;
   Cipher: TDCP_gost;
 begin
+  dcpFillChar(Block, SizeOf(Block), 0);
   Cipher:= TDCP_gost.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Block);
@@ -118,8 +119,7 @@ var
   userkey: array[0..31] of byte;
 begin
   Size:= Size div 8;
-
-  FillChar(userkey,Sizeof(userkey),0);
+  dcpFillChar(userkey,Sizeof(userkey),0);
   Move(Key,userkey,Size);
   for i:= 0 to 7 do
     KeyData[i]:= (dword(UserKey[4*i+3]) shl 24) or (dword(UserKey[4*i+2]) shl 16) or

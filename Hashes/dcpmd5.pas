@@ -66,6 +66,7 @@ var
   Data: array[0..15] of dword;
   A, B, C, D: dword;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Move(HashBuffer,Data,Sizeof(Data));
   A:= CurrentHash[0];
   B:= CurrentHash[1];
@@ -173,6 +174,7 @@ var
   TestHash: TDCP_md5;
   TestOut: array[0..19] of byte;
 begin
+  dcpFillChar(TestOut, SizeOf(TestOut), 0);
   TestHash:= TDCP_md5.Create(nil);
   TestHash.Init;
   TestHash.UpdateStr('abc');

@@ -233,7 +233,7 @@ var
   kb: array[0..3] of word;
   keyb: array[0..15] of byte;
 begin
-  FillChar(keyb,Sizeof(keyb),0);
+  dcpFillChar(keyb,Sizeof(keyb),0);
   Move(key,keyb,Size div 8);
   if n> 0 then
     rounds:= 16 * n
@@ -339,6 +339,7 @@ var
   Cipher: TDCP_ice;
   Data: array[0..7] of byte;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_ice.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Data);
@@ -380,6 +381,7 @@ var
   Cipher: TDCP_thinice;
   Data: array[0..7] of byte;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_thinice.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Data);
@@ -422,6 +424,7 @@ var
   Cipher: TDCP_ice2;
   Data: array[0..7] of byte;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_ice2.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Data);

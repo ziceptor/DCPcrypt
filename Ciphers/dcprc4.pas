@@ -75,6 +75,7 @@ var
   Cipher: TDCP_rc4;
   Data: array[0..4] of byte;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_rc4.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.Encrypt(InData1,Data,Sizeof(Data));

@@ -66,6 +66,7 @@ var
   i: longword;
 begin
   Index:= 0;
+  dcpFillChar(W, SizeOf(W), 0);
   Move(HashBuffer,W,Sizeof(HashBuffer));
   for i:= 0 to 15 do
     W[i]:= SwapDWord(W[i]);
@@ -191,6 +192,7 @@ var
   TestHash: TDCP_sha1;
   TestOut: array[0..19] of byte;
 begin
+  dcpFillChar(TestOut, SizeOf(TestOut), 0);
   TestHash:= TDCP_sha1.Create(nil);
   TestHash.Init;
   TestHash.UpdateStr('abc');

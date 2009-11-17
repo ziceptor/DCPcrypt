@@ -224,6 +224,7 @@ var
 begin
   if not fInitialized then
     raise EDCP_blockcipher.Create('Cipher not initialized');
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   p1:= @Indata;
   p2:= @Outdata;
   for i:= 1 to (Size div 8) do
@@ -254,6 +255,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to Size do
   begin
     EncryptECB(CV,Temp);
@@ -276,6 +278,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to Size do
   begin
     TempByte:= p1^;
@@ -324,6 +327,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to (Size div 8) do
   begin
     Move(p1^,Temp,8);
@@ -402,6 +406,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to (Size div 8) do
   begin
     EncryptECB(CV,temp);
@@ -430,6 +435,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to (Size div 8) do
   begin
     EncryptECB(CV,temp);
@@ -551,6 +557,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to (Size div 16) do
   begin
     Move(p1^,p2^,16);
@@ -579,6 +586,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to Size do
   begin
     EncryptECB(CV,Temp);
@@ -601,6 +609,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to Size do
   begin
     TempByte:= p1^;
@@ -649,6 +658,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to (Size div 16) do
   begin
     Move(p1^,Temp,16);
@@ -727,6 +737,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to (Size div 16) do
   begin
     EncryptECB(CV,temp);
@@ -755,6 +766,7 @@ begin
     raise EDCP_blockcipher.Create('Cipher not initialized');
   p1:= @Indata;
   p2:= @Outdata;
+  dcpFillChar(Temp, SizeOf(Temp), 0);
   for i:= 1 to (Size div 16) do
   begin
     EncryptECB(CV,temp);

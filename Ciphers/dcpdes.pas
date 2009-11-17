@@ -100,6 +100,7 @@ procedure TDCP_customdes.DoInit(KeyB: PByteArray; KeyData: PDwordArray);
 var
   c, d, t, s, t2, i: dword;
 begin
+  t := 0;
   c:= KeyB^[0] or (KeyB^[1] shl 8) or (KeyB^[2] shl 16) or (KeyB^[3] shl 24);
   d:= KeyB^[4] or (KeyB^[5] shl 8) or (KeyB^[6] shl 16) or (KeyB^[7] shl 24);
   perm_op(d,c,t,4,$0f0f0f0f);
@@ -361,6 +362,7 @@ var
   Cipher: TDCP_des;
   Data: array[0..7] of byte;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_des.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Data);
@@ -381,7 +383,7 @@ procedure TDCP_des.InitKey(const Key; Size: longword);
 var
   KeyB: array[0..7] of byte;
 begin
-  FillChar(KeyB,Sizeof(KeyB),0);
+  dcpFillChar(KeyB,Sizeof(KeyB),0);
   Move(Key,KeyB,Size div 8);
   DoInit(@KeyB,@KeyData);
 end;
@@ -435,6 +437,7 @@ var
   Cipher: TDCP_3des;
   Block: array[0..7] of byte;
 begin
+  dcpFillChar(Block, SizeOf(Block), 0);
   Cipher:= TDCP_3des.Create(nil);
   Cipher.Init(Key,Sizeof(Key)*8,nil);
   Cipher.EncryptECB(PlainText,Block);
@@ -448,7 +451,7 @@ procedure TDCP_3des.InitKey(const Key; Size: longword);
 var
   KeyB: array[0..2,0..7] of byte;
 begin
-  FillChar(KeyB,Sizeof(KeyB),0);
+  dcpFillChar(KeyB,Sizeof(KeyB),0);
   Move(Key,KeyB,Size div 8);
   DoInit(@KeyB[0],@KeyData[0]);
   DoInit(@KeyB[1],@KeyData[1]);

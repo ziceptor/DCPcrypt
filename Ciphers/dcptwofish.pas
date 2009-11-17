@@ -100,8 +100,8 @@ var
   Cipher: TDCP_twofish;
 begin
   Cipher:= TDCP_twofish.Create(nil);
-  FillChar(Key,Sizeof(Key),0);
-  FillChar(Block,Sizeof(Block),0);
+  dcpFillChar(Key,Sizeof(Key),0);
+  dcpFillChar(Block,Sizeof(Block),0);
   for i:= 1 to 49 do
   begin
     Cipher.Init(Key,128,nil);
@@ -110,8 +110,8 @@ begin
     Cipher.Burn;
   end;
   Result:= boolean(CompareMem(@Block,@Out128,16));
-  FillChar(Key,Sizeof(Key),0);
-  FillChar(Block,Sizeof(Block),0);
+  dcpFillChar(Key,Sizeof(Key),0);
+  dcpFillChar(Block,Sizeof(Block),0);
   for i:= 1 to 49 do
   begin
     Cipher.Init(Key,192,nil);
@@ -254,7 +254,7 @@ var
   k64Cnt, i, j, A, B, q: DWord;
   L0, L1: array[0..255] of byte;
 begin
-  FillChar(Key32,Sizeof(Key32),0);
+  dcpFillChar(Key32,Sizeof(Key32),0);
   Move(Key,Key32,Size div 8);
   if Size<= 128 then           { pad the key to either 128bit, 192bit or 256bit}
     Size:= 128

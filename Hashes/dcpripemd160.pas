@@ -61,6 +61,7 @@ var
   aa, bb, cc, dd, ee, aaa, bbb, ccc, ddd, eee: DWord;
   X: array[0..15] of DWord;
 begin
+  dcpFillChar(X, SizeOf(X), 0);
   Move(HashBuffer,X,Sizeof(X));
   aa:= CurrentHash[0];
   aaa:= CurrentHash[0];
@@ -599,6 +600,7 @@ var
   TestHash: TDCP_ripemd160;
   TestOut: array[0..19] of byte;
 begin
+  dcpFillChar(TestOut, SizeOf(TestOut), 0);
   TestHash:= TDCP_ripemd160.Create(nil);
   TestHash.Init;
   TestHash.UpdateStr('a');

@@ -98,6 +98,7 @@ var
   Block: array[0..15] of byte;
   Cipher: TDCP_rijndael;
 begin
+  dcpFillChar(Block, SizeOf(Block), 0);
   Cipher:= TDCP_rijndael.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Block);
@@ -138,7 +139,7 @@ var
 begin
   Size:= Size div 8;
 
-  FillChar(tk,Sizeof(tk),0);
+  dcpFillChar(tk,Sizeof(tk),0);
   Move(Key,tk,Size);
   if Size<= 16 then
   begin

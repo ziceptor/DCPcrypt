@@ -96,6 +96,7 @@ var
   Cipher: TDCP_rc2;
   Data: array[0..7] of byte;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_rc2.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InData1,Data);
@@ -117,6 +118,7 @@ var
   i: longword;
   KeyB: array[0..127] of byte;
 begin
+  dcpFillChar(KeyB, SizeOf(KeyB), 0);
   Move(Key,KeyB,Size div 8);
   for i:= (Size div 8) to 127 do
     KeyB[i]:= sBox[(KeyB[i-(Size div 8)]+KeyB[i-1]) and $FF];

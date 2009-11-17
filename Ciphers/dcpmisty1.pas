@@ -92,6 +92,7 @@ var
   Cipher: TDCP_misty1;
   Block: array[0..7] of byte;
 begin
+  dcpFillChar(Block, SizeOf(Block), 0);
   Cipher:= TDCP_misty1.Create(nil);
   Cipher.Init(Key,Sizeof(Key)*8,nil);
   Cipher.EncryptECB(Plain1,Block);
@@ -188,7 +189,7 @@ var
   KeyB: array[0..15] of byte;
   i: longword;
 begin
-  FillChar(KeyB,Sizeof(KeyB),0);
+  dcpFillChar(KeyB,Sizeof(KeyB),0);
   Move(Key,KeyB,Size div 8);
   for i:= 0 to 7 do
     KeyData[i]:= (KeyB[i*2] * 256) + KeyB[i*2+1];

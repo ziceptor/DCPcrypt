@@ -95,6 +95,7 @@ var
   Cipher: TDCP_mars;
   Block: array[0..3] of dword;
 begin
+  dcpFillChar(Block, SizeOf(Block), 0);
   Cipher:= TDCP_mars.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(Plain1,Block);
@@ -140,8 +141,11 @@ var
   t: array[-7..39] of DWord;
   KeyB: array[0..39] of DWord;
 begin
+  m := 0;
   Size:= Size div 8;
-  FillChar(KeyB,Sizeof(KeyB),0);
+  dcpFillChar(KeyB,Sizeof(KeyB),0);
+  dcpFillChar(t, SizeOf(t), 0);
+
   Move(Key,KeyB,Size);
   Size:= Size div 4;
   Move(vk,t,Sizeof(vk));

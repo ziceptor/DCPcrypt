@@ -83,6 +83,7 @@ var
   Data: array[0..1] of dword;
   Cipher: TDCP_tea;
 begin
+  dcpFillChar(Data, SizeOf(Data), 0);
   Cipher:= TDCP_tea.Create(nil);
   Cipher.Init(Key,Sizeof(Key)*8,nil);
   Cipher.EncryptECB(PT,Data);

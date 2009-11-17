@@ -123,6 +123,7 @@ var
   Block: array[0..15] of byte;
   Cipher: TDCP_cast256;
 begin
+  dcpFillChar(Block, SizeOf(Block), 0);
   Cipher:= TDCP_cast256.Create(nil);
   Cipher.Init(Key1,Sizeof(Key1)*8,nil);
   Cipher.EncryptECB(InBlock1,Block);
@@ -154,7 +155,7 @@ var
 begin
   Size:= Size div 8;
 
-  FillChar(x,Sizeof(x),0);
+  dcpFillChar(x,Sizeof(x),0);
   Move(Key,x,Size);
 
   cm:= $5a827999;
