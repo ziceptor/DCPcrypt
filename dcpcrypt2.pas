@@ -247,9 +247,12 @@ type
     { Helper functions }
 
 procedure XorBlock(var InData1, InData2; Size: longword);
+// Supposed to be an optimized version of XorBlock() using 32-bit xor
+procedure XorBlockEx(var InData1, InData2; Size: longword);
 // removes the compiler hint due to first param being 'var' instead of 'out'
 procedure dcpFillChar(out x; count: SizeInt; Value: Byte); overload;
 procedure dcpFillChar(out x; count: SizeInt; Value: Char); overload;
+procedure ZeroMemory(Destination: Pointer; Length: PtrUInt);
 
 
 
@@ -658,6 +661,11 @@ begin
   {$HINTS ON}
 end;
 
+procedure ZeroMemory(Destination: Pointer; Length: PtrUInt);
+begin
+  FillChar(Destination^, Length, 0);
+end;
+
 procedure dcpFillChar(out x; count: SizeInt; Value: Char);
 begin
   {$HINTS OFF}
@@ -665,5 +673,30 @@ begin
   {$HINTS ON}
 end;
 
-end.
+// Supposed to be an optimized version of XorBlock() using 32-bit xor
+procedure XorBlockEx(var InData1, InData2; Size: longword);
+var
+  l1: PIntegerArray;
+  l2: PIntegerArray;
+  b1: PByteArray;
+  b2: PByteArray;
+  i: integer;
+  c: integer;
+begin
+  l1 := @inData1;
+  l2 := @inData2;
+  for i := 0 to size div sizeof(LongWord)-1 do
+    l1[i] := l1[i] xor l2[i];
 
+  // the rest of the buffer (3 bytes)
+  c := size mod sizeof(longWord);
+  if c > 0 then begin
+    b1 := @InData1;
+    b2 := @InData2;
+    for i := (size-c) to size-1 do
+      b1[i] := b1[i] xor b2[i];
+  end;
+end;
+
+end.
+
