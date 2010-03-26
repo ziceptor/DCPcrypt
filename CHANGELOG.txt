@@ -1,4 +1,13 @@
 
+Change in v2.0.4.1 by Graeme Geldenhuys (2010)
+
+ * Version number bumped to v2.0.4.1
+
+ * More fixes for 64-bit support
+
+ * Removed a lot of compiler warnings - tested with FPC 2.4.1
+
+
 Change in v2.0.4 by Graeme Geldenhuys (2009)
  
  * Version number bumped to v2.0.4
