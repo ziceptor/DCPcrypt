@@ -13,10 +13,15 @@
       <Parsing>
         <SyntaxOptions>
           <SyntaxMode Value="Delphi"/>
+          <CStyleOperator Value="False"/>
+          <IncludeAssertionCode Value="True"/>
+          <AllowLabel Value="False"/>
+          <CPPInline Value="False"/>
           <UseAnsiStrings Value="True"/>
         </SyntaxOptions>
       </Parsing>
       <Other>
+        <CustomOptions Value="-Xd"/>
         <CompilerPath Value="$(CompPath)"/>
       </Other>
     </CompilerOptions>
@@ -25,7 +30,7 @@
     <License Value="DCPcrypt is open source software (released under the MIT license) and as such there is no charge for inclusion in other software.
 www.cityinthesky.co.uk/cryptography.html
 "/>
-    <Version Major="2" Release="4"/>
+    <Version Major="2" Release="4" Build="1"/>
     <Files Count="30">
       <Item1>
         <Filename Value="dcpbase64.pas"/>
