@@ -1,5 +1,5 @@
      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-     =   DCPcrypt Cryptographic Component Library v2 Beta 3    =
+     =   DCPcrypt Cryptographic Component Library v2.0.4.1     =
      =          Copyright (c) 1999-2003 David Barton           =
      =             http://www.cityinthesky.co.uk/              =
      =               crypto@cityinthesky.co.uk                 =
@@ -9,9 +9,10 @@
 Introduction:
 
 DCPcrypt is a collection of cryptographic components for the Borland
-Delphi(tm), C++ Builder(tm) and Kylix(tm) programming languages. The 
-supported versions are Delphi 4, 5, 6, 7, 2005, C++ Builder (3?), 4, 
-5, (6?) and Kylix 1 (untested), 2 and 3 (untested).
+Delphi(tm), C++ Builder(tm), Kylix(tm) and the Free Pascal programming
+languages. The supported versions are Delphi 4, 5, 6, 7, 2005, 
+C++ Builder (3?), 4, 5, (6?) and Kylix 1 (untested), 2 and 3 (untested)
+and Free Pascal v2.0.4 and later.
 
 Thanks to Manuel C. for the modifications to make DCPcrypt work under
 Delphi 2005!
@@ -23,24 +24,21 @@ descended from one of several base classes, TDCP_cipher for encryption
 algorithms and TDCP_hash for message digest algorithms.
 
 DCPcrypt is open source software (released under the MIT license) and
-as such there is no charge for inclusion in other software. However, I
-am currently a student and if you are making money from my software I
-would really appreciate a donation of some sort, whether financial or
-a license for the software you develop (or if anyone wants to sponsor 
-a Mathematical Modelling (Masters) student for their final year...). 
-Please note THIS IS NOT COMPULSORY IN ANY WAY. See 
-http://www.cityinthesky.co.uk/cryptography.html for details on 
-financial donations.
+as such there is no charge for inclusion in other software.
 
 This software is OSI Certified Open Source Software.
 OSI Certified is a certification mark of the Open Source Initiative.
 
-If you maintain a website then a link to my page at 
-http://www.cityinthesky.co.uk/ would be great!
+If you maintain a website then a link to the DCPCrypt wiki page at
+http://wiki.lazarus.freepascal.org/DCPcrypt would be great!
 
 
 
 What's New:
+
+Changes since....
+
+  * Please see the source code repository history.
 
 Changes since DCPcrypt v2 Beta 2 include
 
@@ -50,7 +48,7 @@ Changes since DCPcrypt v2 Beta 2 include
 Changes since DCPcrypt v2 Beta 1 include
 
   *  Renamed source code files for hashes and ciphers to DCPxxx.pas
-  
+
   *  Change the format of Cipher.InitStr so that the hash algorithm
      used to generate the key is explicitly specified. In order to
      get the same functionality as before, use TDCP_sha1.
@@ -67,27 +65,32 @@ Changes since DCPcrypt v2 Beta 1 include
   *  Added the full range of operation modes for Haval. By changing
      the defines at the top of DCPhaval.pas you can specify the
      number of passes and the output hash size.
-     
+
   *  Added the Tiger hash algorithm (192bit digest).
-  
+
   *  Changed the name of the file containing TDCP_ripemd160 for 
      consistency to DCPripemd160 from DCPrmd160.
-     
+
   *  GOST no longer appears on the component palette pending verifying
      what the actual standard is (the code is still included however).
 
   *  Added the RipeMD-128 hash algorithm (128bit digest).
-  
+
   *  Added the Serpent block cipher (AES finalist).
-  
+
   *  Added the SHA-256,384,512 hash algorithms (256, 384, 512bit digest
      respectively).
 
   *  Added CTR chaining mode to all block ciphers.
-  
+
 
 
 Installation:
+
+Free Pascal & Lazarus:
+
+             Please see the following URL:
+               http://wiki.lazarus.freepascal.org/DCPcrypt
 
 Delphi:      Open the appropriate package, DCPdelphiX.dpk where X is 
              your version of Delphi (either 4, 5 or 6). Then press the
