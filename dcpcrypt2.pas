@@ -24,7 +24,7 @@
 {******************************************************************************}
 unit DCPcrypt2;
 
-{$MODE Delphi}
+{$ifdef FPC}{$MODE Delphi}{$endif}
 
 interface
 uses
@@ -699,4 +699,4 @@ begin
 end;
 
 end.
-
+
